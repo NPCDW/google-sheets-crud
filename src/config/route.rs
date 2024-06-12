@@ -13,7 +13,7 @@ use crate::util::response_util::ApiResponse;
 
 pub async fn init(app_state: AppState) -> Router {
     let sheets = Router::new()
-        .route("/append", post(sheets_ctl::append));
+        .route("/append", post(sheets_ctl::update));
 
     let api = Router::new()
         .nest("/sheets", sheets);

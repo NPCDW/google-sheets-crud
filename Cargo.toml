@@ -1,6 +1,6 @@
 [package]
 name = "google-sheets-crud"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
@@ -14,5 +14,6 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "time", "local
 time = "0.3.21"
 reqwest = { version = "0.11.26", features = ["json", "stream", "socks"] }
 anyhow = "1.0"
+regex = "1.10.3"
 
 google-cloud-auth = "0.15.0"
