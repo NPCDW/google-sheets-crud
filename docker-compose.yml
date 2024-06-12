@@ -1,11 +1,11 @@
 services:
-  google-sheets-curd:
-    image: npcdw/google-sheets-curd:latest
-    container_name: google-sheets-curd
+  google-sheets-crud:
+    image: npcdw/google-sheets-crud:latest
+    container_name: google-sheets-crud
     ports:
       - 5234:5234
     volumes:
-      - "${PWD}/data/:/google-sheets-curd/"
+      - "${PWD}/data/:/google-sheets-crud/"
     environment:
       TZ : 'Asia/Shanghai'
       LANG: 'C.UTF-8'
