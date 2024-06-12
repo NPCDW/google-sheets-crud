@@ -24,7 +24,7 @@ async fn main() -> anyhow::Result<()> {
 
     let router = config::route::init(app_state).await;
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:5234").await?;
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:5234").await?;
     tracing::info!("listening on {:?}", listener);
     axum::serve(listener, router).await
         .unwrap_or_else(|e| {
