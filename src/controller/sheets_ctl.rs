@@ -25,6 +25,8 @@ pub async fn update(State(app_state): State<AppState>, body: Json<AppendParam>) 
     if res.is_err() {
         return ApiResponse::error(&res.err().unwrap().to_string());
     }
+    // google sheets api 限制每个用户每分钟操作60次，为了简单，这里直接睡眠1s
+    tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
     ApiResponse::ok_data(res.unwrap())
 }
 

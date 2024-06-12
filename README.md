@@ -38,5 +38,8 @@ https://docs.google.com/spreadsheets/d/1DsoedUDlmsdaDKMAK5sdaM_IInsdaonLOLsda51s
 
 ## 使用
 
+[google sheets api 说明文档](https://developers.google.com/sheets/api/limits?hl=zh-cn)
+
 1. 将下载的 json 文件重命名为 `service_account.json` 并放到此项目根目录中
 2. 将根目录下的 config_example.json 重命名为 config.json ,并修改内部的 sheet_id 改为第一步获取的 sheet 表格 ID
+3. 现在你可以启动项目了
