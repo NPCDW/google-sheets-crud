@@ -7,13 +7,14 @@ use axum::{
     Router,
 };
 use tower_http::catch_panic::CatchPanicLayer;
-use crate::controller::sheets_ctl;
+use crate::controller::{airport_sheets_ctl, vps_sheets_ctl};
 use crate::config::state::AppState;
 use crate::util::response_util::ApiResponse;
 
 pub async fn init(app_state: AppState) -> Router {
     let sheets = Router::new()
-        .route("/append", post(sheets_ctl::update));
+        .route("/vps", post(vps_sheets_ctl::update))
+        .route("/airport", post(airport_sheets_ctl::update));
 
     let api = Router::new()
         .nest("/sheets", sheets);

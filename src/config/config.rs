@@ -3,7 +3,8 @@ use crate::util::file_util;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Config {
-    pub sheets_id: String,
+    pub vps_sheets_id: String,
+    pub airport_sheets_id: String,
 }
 
 const CONFIG_FILE_NAME: &'static str = "config.json";
