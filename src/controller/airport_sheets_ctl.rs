@@ -22,13 +22,17 @@ pub async fn update(State(app_state): State<AppState>, body: Json<UpdateParam>) 
         return ApiResponse::error(&res.err().unwrap().to_string());
     }
     let res = res.unwrap();
+    if res.id == 0 {
+        return ApiResponse::ok_msg("不添加序号0节点");
+    }
     let data = vec![serde_json::Value::Array(vec![
         res.id.into(),
         res.name.clone().into(),
         res.website.clone().into(),
         res.channels.clone().into(),
         res.groups.clone().into(),
-        res.collection_time.clone().into()])];
+        res.collection_time.clone().into(),
+        body.id.into()])];
     let res = sheets_svc::update(&app_state, &app_state.config.airport_sheets_id, res.id + 1, data).await;
     if res.is_err() {
         return ApiResponse::error(&res.err().unwrap().to_string());
