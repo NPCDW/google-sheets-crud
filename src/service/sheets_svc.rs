@@ -8,6 +8,9 @@ const USER_AGENT_KEY: &str = "User-Agent";
 const USER_AGENT_VALUE: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0";
 
 pub async fn update(app_state: &AppState, sheets_id: &str, row: u32, data: Vec<serde_json::Value>) -> anyhow::Result<()> {
+    tracing::info!("插入数据: sheets_id: {}, row: {}, data: {:?}", sheets_id, row, data);
+    // google sheets api 限制每个用户每分钟操作60次，这里简单处理直接睡眠1s，（多线程调用依旧会被触发）
+    tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
     let token = get_token(app_state).await?;
     let mut headers = HeaderMap::new();
     headers.insert(USER_AGENT_KEY, HeaderValue::from_static(USER_AGENT_VALUE));

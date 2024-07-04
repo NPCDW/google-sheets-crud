@@ -5,7 +5,8 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - command: cargo run -h
+  - init: cargo build
+    command: cargo run
 
 vscode:
   extensions:
